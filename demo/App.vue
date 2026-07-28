@@ -52,6 +52,11 @@
             </div>
         </div>
 
+        <div class="demo-section">
+            <h2>流式渲染演示</h2>
+            <StreamingMarkdown :content="streamingMarkdown" />
+        </div>
+
         <div v-if="lastEvent" class="demo-event">
             <strong>最近事件：</strong>{{ lastEvent }}
         </div>
@@ -62,8 +67,9 @@
 import { computed, ref } from 'vue'
 import { Markdown } from 'markdownit-vue-render'
 import KnowledgeMarkdown from './components/KnowledgeMarkdown.vue'
+import StreamingMarkdown from './components/StreamingMarkdown.vue'
 import type { MarkdownEntity } from './plugins/entity'
-import { basicMarkdown, documents, entities, knowledgeMarkdown } from './mockData'
+import { basicMarkdown, documents, entities, knowledgeMarkdown, streamingMarkdown } from './mockData'
 
 const lastEvent = ref('')
 
