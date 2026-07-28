@@ -21,7 +21,8 @@ export function useStreaming(content: string) {
 
     const visibleSource = computed(() => tokens.value.slice(0, visibleIndex.value).join(''))
 
-    // 临时补全未闭合的代码块围栏，使流式输出时代码块能正确渲染
+    // 流式解析特殊处理：当代码块围栏未闭合时，只在用于渲染的文本中补全闭合标记，
+    // 使 markdown-it 在流式输出过程中也能正确渲染已输入的代码块；真实原文保持不变。
     const renderSource = computed(() => {
         const src = visibleSource.value
         const lines = src.split('\n')
