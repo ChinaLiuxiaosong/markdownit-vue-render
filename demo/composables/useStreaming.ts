@@ -35,10 +35,10 @@ export function useStreaming(content: string) {
 
     function start() {
         if (isPlaying.value) return
+        // 点击播放时从头开始流式渲染
+        stop()
+        visibleIndex.value = 0
         isPlaying.value = true
-        if (visibleIndex.value >= tokens.value.length) {
-            visibleIndex.value = 0
-        }
         tick()
     }
 
@@ -55,10 +55,22 @@ export function useStreaming(content: string) {
         visibleIndex.value = 0
     }
 
+    function showAll() {
+        stop()
+        visibleIndex.value = tokens.value.length
+    }
+
     watch(
         () => content,
         () => {
-            reset()
+            showAll()
+        }
+    )
+
+    watch(
+        () => tokens.value.length,
+        () => {
+            showAll()
         }
     )
 
