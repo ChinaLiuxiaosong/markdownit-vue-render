@@ -111,8 +111,8 @@ function renderTag(
     if (props.children?.length) {
         return h(props.tag, props.attrs, h(MarkdownTokenChildrenRender, { tokens: props.children }, slots))
     }
-    if (props.content) {
-        return withDirectives(h(props.tag, props.attrs), [[resolveDirective('html'), props.content]])
+    if (props.content !== undefined) {
+        return h(props.tag, props.attrs, props.content)
     }
     return h(props.tag, props.attrs)
 }
