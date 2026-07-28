@@ -1,0 +1,114 @@
+.markdown {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.9);
+    line-height: 22px;
+
+    .markdown-block {
+        margin: 0 0 12px;
+
+        &.markdown-level-0:last-child {
+            margin: 0;
+        }
+    }
+
+    .markdown-h1,
+    .markdown-h2,
+    .markdown-h3,
+    .markdown-h4,
+    .markdown-h5,
+    .markdown-h6 {
+        font-weight: 600;
+    }
+
+    .markdown-h1 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .markdown-h2 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .markdown-h3 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .markdown-h4 {
+        font-size: 13px;
+        line-height: 21px;
+    }
+
+    .markdown-h5 {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .markdown-h6 {
+        font-size: 11px;
+        line-height: 19px;
+    }
+
+    ul.markdown-ul {
+        padding-inline-start: 22px;
+
+        li.markdown-li {
+            &::marker {
+                color: #5e5e5e;
+            }
+        }
+    }
+
+    ol.markdown-ol {
+        padding-inline-start: 22px;
+    }
+
+    li.markdown-li {
+        margin: 0 0 12px;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    div.markdown-ul {
+        div.markdown-ul-li::before {
+            content: '•';
+            color: #5e5e5e;
+        }
+    }
+
+    div.markdown-ol {
+        counter-reset: ol-counter;
+
+        div.markdown-ol-li::before {
+            counter-increment: ol-counter;
+            content: counter(ol-counter) '.';
+        }
+    }
+
+    div.markdown-li {
+        padding-left: 22px;
+
+        &::before {
+            display: block;
+            width: 22px;
+            margin-left: -22px;
+            text-align: center;
+            float: left;
+        }
+    }
+
+    .markdown-a {
+        cursor: pointer;
+    }
+
+    .markdown-html-block {
+        display: contents;
+    }
+
+    .markdown-html-inline {
+        display: contents;
+    }
+}
