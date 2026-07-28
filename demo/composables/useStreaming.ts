@@ -74,6 +74,9 @@ export function useStreaming(content: string) {
         }
     )
 
+    // 初始化时直接显示完整内容
+    showAll()
+
     return {
         mode,
         interval,

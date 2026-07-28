@@ -81,6 +81,14 @@ app.use(MarkdownitVueRender)
 
 对应的业务组件 `demo/components/KnowledgeMarkdown.vue` 展示了如何组合核心库与自定义插件，实现带弹窗的文档引用与实体点击交互。
 
+### 流式渲染演示
+
+`demo/components/StreamingMarkdown.vue` 提供了一个流式渲染示例：
+
+- 进入页面时直接显示完整 Markdown 内容。
+- 点击"播放"按钮可从头开始，按逐字/逐词/逐段模式模拟大模型输出。
+- 原文输出区与渲染结果区同步更新。
+
 ## 开发
 
 ```bash
@@ -105,12 +113,18 @@ bun run typecheck
 
 ## 发布
 
+### npm
+
 发布到 npm 前，请执行 `prepublishOnly` 脚本，确保同时构建库产物和类型声明：
 
 ```bash
 bun run prepublishOnly
 npm publish --registry https://registry.npmjs.org/
 ```
+
+### GitHub Pages
+
+`.github/workflows/deploy.yml` 已配置好自动构建部署工作流，但需要在 GitHub 仓库设置中手动启用 Pages 并选择 "GitHub Actions" 作为 Source。首次启用后，推送代码到 `main` 分支会自动触发部署。
 
 ## API
 
