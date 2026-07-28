@@ -7,15 +7,15 @@
 
         <div class="demo-section">
             <h2>核心 Markdown 渲染</h2>
-            <StreamingMarkdown :content="basicMarkdown" v-slot="{ renderSource }">
+            <StreamingMarkdown :content="basicMarkdown" v-slot="{ source }">
                 <div class="demo-row">
                     <div class="demo-col">
                         <h3>渲染结果</h3>
-                        <Markdown :content="renderSource" />
+                        <Markdown :content="source" />
                     </div>
                     <div class="demo-col">
                         <h3>Markdown 原文</h3>
-                        <pre class="demo-source">{{ renderSource }}</pre>
+                        <pre class="demo-source">{{ source }}</pre>
                     </div>
                 </div>
             </StreamingMarkdown>
@@ -23,12 +23,12 @@
 
         <div class="demo-section">
             <h2>自定义扩展示例：文档引用 + 实体链接</h2>
-            <StreamingMarkdown :content="knowledgeMarkdown" v-slot="{ renderSource }">
+            <StreamingMarkdown :content="knowledgeMarkdown" v-slot="{ source }">
                 <div class="demo-row">
                     <div class="demo-col">
                         <h3>渲染结果</h3>
                         <KnowledgeMarkdown
-                            :content="renderSource"
+                            :content="source"
                             :documents="documents"
                             :entities="entities"
                             @open-entity="onOpenEntity"
@@ -37,7 +37,7 @@
                     </div>
                     <div class="demo-col">
                         <h3>Markdown 原文</h3>
-                        <pre class="demo-source">{{ renderSource }}</pre>
+                        <pre class="demo-source">{{ source }}</pre>
                     </div>
                 </div>
                 <div class="demo-config">

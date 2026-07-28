@@ -23,7 +23,6 @@
 
         <slot
             :source="visibleSource"
-            :render-source="renderSource"
             :is-playing="isPlaying"
         />
     </div>
@@ -36,7 +35,7 @@ const props = defineProps<{
     content: string
 }>()
 
-const { mode, interval, isPlaying, visibleSource, renderSource, start, reset } = useStreaming(props.content)
+const { mode, interval, isPlaying, visibleSource, start, reset } = useStreaming(props.content)
 </script>
 
 <style scoped lang="less">
