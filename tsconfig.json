@@ -23,6 +23,6 @@
             "markdownit-vue-render": ["./src/index.ts"]
         }
     },
-    "include": ["src/**/*.ts", "src/**/*.vue", "demo/**/*.ts", "demo/**/*.vue"],
+    "include": ["src/**/*.ts", "src/**/*.vue", "demo/**/*.ts", "demo/**/*.vue", "demo/**/*.d.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

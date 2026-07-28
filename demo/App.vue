@@ -7,54 +7,53 @@
 
         <div class="demo-section">
             <h2>核心 Markdown 渲染</h2>
-            <div class="demo-row">
-                <div class="demo-col">
-                    <h3>渲染结果</h3>
-                    <Markdown :content="basicMarkdown" />
+            <StreamingMarkdown :content="basicMarkdown" v-slot="{ renderSource }">
+                <div class="demo-row">
+                    <div class="demo-col">
+                        <h3>渲染结果</h3>
+                        <Markdown :content="renderSource" />
+                    </div>
+                    <div class="demo-col">
+                        <h3>Markdown 原文</h3>
+                        <pre class="demo-source">{{ renderSource }}</pre>
+                    </div>
                 </div>
-                <div class="demo-col">
-                    <h3>Markdown 原文</h3>
-                    <pre class="demo-source">{{ basicMarkdown }}</pre>
-                </div>
-            </div>
+            </StreamingMarkdown>
         </div>
 
         <div class="demo-section">
             <h2>自定义扩展示例：文档引用 + 实体链接</h2>
-            <div class="demo-row">
-                <div class="demo-col">
-                    <h3>渲染结果</h3>
-                    <KnowledgeMarkdown
-                        :content="knowledgeMarkdown"
-                        :documents="documents"
-                        :entities="entities"
-                        @open-entity="onOpenEntity"
-                        @open-document="onOpenDocument"
-                    />
-                </div>
-                <div class="demo-col">
-                    <h3>Markdown 原文</h3>
-                    <pre class="demo-source">{{ knowledgeMarkdown }}</pre>
-                </div>
-            </div>
-            <div class="demo-config">
-                <h3>自定义插件配置</h3>
-                <div class="demo-config-grid">
-                    <div class="demo-config-block">
-                        <h4>docref 文档列表</h4>
-                        <pre>{{ configDocuments }}</pre>
+            <StreamingMarkdown :content="knowledgeMarkdown" v-slot="{ renderSource }">
+                <div class="demo-row">
+                    <div class="demo-col">
+                        <h3>渲染结果</h3>
+                        <KnowledgeMarkdown
+                            :content="renderSource"
+                            :documents="documents"
+                            :entities="entities"
+                            @open-entity="onOpenEntity"
+                            @open-document="onOpenDocument"
+                        />
                     </div>
-                    <div class="demo-config-block">
-                        <h4>entity 实体列表</h4>
-                        <pre>{{ configEntities }}</pre>
+                    <div class="demo-col">
+                        <h3>Markdown 原文</h3>
+                        <pre class="demo-source">{{ renderSource }}</pre>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="demo-section">
-            <h2>流式渲染演示</h2>
-            <StreamingMarkdown :content="streamingMarkdown" />
+                <div class="demo-config">
+                    <h3>自定义插件配置</h3>
+                    <div class="demo-config-grid">
+                        <div class="demo-config-block">
+                            <h4>docref 文档列表</h4>
+                            <pre>{{ configDocuments }}</pre>
+                        </div>
+                        <div class="demo-config-block">
+                            <h4>entity 实体列表</h4>
+                            <pre>{{ configEntities }}</pre>
+                        </div>
+                    </div>
+                </div>
+            </StreamingMarkdown>
         </div>
 
         <div v-if="lastEvent" class="demo-event">
@@ -69,7 +68,7 @@ import { Markdown } from 'markdownit-vue-render'
 import KnowledgeMarkdown from './components/KnowledgeMarkdown.vue'
 import StreamingMarkdown from './components/StreamingMarkdown.vue'
 import type { MarkdownEntity } from './plugins/entity'
-import { basicMarkdown, documents, entities, knowledgeMarkdown, streamingMarkdown } from './mockData'
+import { basicMarkdown, documents, entities, knowledgeMarkdown } from './mockData'
 
 const lastEvent = ref('')
 
